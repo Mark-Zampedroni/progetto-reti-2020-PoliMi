@@ -32,7 +32,7 @@ architecture Behavioral of project_reti_logiche is
 	signal got_encoded : std_logic := '0';
 	
 begin
-    -- Contatore sequenziale, il resto è combinatorio --
+    -- Contatore sequenziale, il resto Ã¨ combinatorio --
     process (i_clk, i_rst, i_start, o_we_next) 
     begin
         if(i_rst = '1' or i_start = '0') then
@@ -97,7 +97,7 @@ begin
                     got_uncoded_next <= true; 
                 else
                     encod_index := index + "10"; -- l'index della WZ in arrivo su i_data e' quello di 2 cicli di clk fa   
-                    -- sottrazione ad 8 bit supponendo che le WZ arrivino fino a 127, con certezza siano complete e arrivino fino a 124 si può abbassare a 7 bit
+                    -- sottrazione ad 8 bit supponendo che le WZ arrivino fino a 127, con certezza siano complete e arrivino fino a 124 si puÃ² abbassare a 7 bit
                     offset := to_integer(unsigned("0" & (uncoded_addr) - i_data)); -- Differenza tra indirizzo da codificare e indirizzo WZ, gioca su effetto pac-man                    
                     if(offset < 4) then -- Se WZ trovata
                         o_data_next(7 downto 4) <= "1" & encod_index(2 downto 0); -- qui (3 downto 0) sara' sempre "0000"
